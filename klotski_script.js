@@ -246,7 +246,7 @@ window.addEventListener('load', (event) => {
         },
 
         updateLevelIndicator: function () {
-            document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
+            document.getElementById('level-indicator').textContent = `Artefact ${this.currentLevel + 1}`;
         },
 
         onMouseDown: function (event) {
