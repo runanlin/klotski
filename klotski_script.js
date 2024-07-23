@@ -144,33 +144,33 @@ window.addEventListener('load', (event) => {
                 }
             }
         },
-
+        
         nextLevel: function () {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
-            this.startGame();
             this.hideIframe();
+            this.startGame();
         },
-
+        
         lockGame: function () {
             this.canvas.removeEventListener('mousedown', this.onMouseDown);
             this.canvas.removeEventListener('mousemove', this.onMouseMove);
             this.canvas.removeEventListener('mouseup', this.onMouseUp);
             cancelAnimationFrame(this.animationFrameId);
         },
-
+        
         displayNextLevelMessage: function () {
             this.createIframe(`
                 <h2>Level Complete!</h2>
-                <button onclick="window.KlotskiGame.nextLevel()">Next Level</button>
+                <button onclick="parent.window.KlotskiGame.nextLevel()">Next Level</button>
             `);
         },
-
+        
         displayEndGameMessage: function () {
             this.createIframe(`
                 <h2>You dug up all the pieces! Good job!</h2>
             `);
         },
-
+        
         createIframe: function (content) {
             const iframe = document.createElement('iframe');
             iframe.id = 'endgame-iframe';
@@ -183,7 +183,7 @@ window.addEventListener('load', (event) => {
             iframe.style.zIndex = '1000';
             iframe.style.width = '300px';
             iframe.style.height = '200px';
-
+        
             iframe.srcdoc = `
                 <html>
                 <head>
@@ -211,16 +211,16 @@ window.addEventListener('load', (event) => {
                 </body>
                 </html>
             `;
-
+        
             document.body.appendChild(iframe);
         },
-
+        
         hideIframe: function () {
             const iframe = document.getElementById('endgame-iframe');
             if (iframe) {
                 iframe.remove();
             }
-        },
+        },        
 
         updateLevelIndicator: function () {
             document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
