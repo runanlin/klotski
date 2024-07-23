@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
         rows: 5,
         cols: 4,
         currentPiece: null,
-        currentLevel: 0, // Start at level 0 (Level 1)
+        currentLevel: 3, // Start at level 0 (Level 1)
         levels: [
             // Level 1 setup
             [
