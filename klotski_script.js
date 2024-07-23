@@ -12,8 +12,34 @@ window.addEventListener('load', (event) => {
         rows: 5,
         cols: 4,
         currentPiece: null,
-        possibleMoves: [],
-        graph: [],
+        currentLevel: 4, // Start at level 0 (Level 1)
+        levels: [
+            // Level 1 setup
+            [
+                // Add pieces configuration for Level 1
+            ],
+            // Level 2 setup
+            [
+                // Add pieces configuration for Level 2
+            ],
+            // Level 3 setup
+            [
+                // Add pieces configuration for Level 3
+            ],
+            // Level 4 setup
+            [
+                { row: 0, col: 0, width: 1, height: 2 },
+                { row: 0, col: 1, width: 2, height: 2, color: '#ff6f69' },
+                { row: 0, col: 3, width: 1, height: 2 },
+                { row: 2, col: 0, width: 1, height: 2 },
+                { row: 2, col: 3, width: 1, height: 2 },
+                { row: 2, col: 1, width: 2, height: 1 },
+                { row: 4, col: 0, width: 1, height: 1 },
+                { row: 4, col: 3, width: 1, height: 1 },
+                { row: 3, col: 1, width: 1, height: 1 },
+                { row: 3, col: 2, width: 1, height: 1 },
+            ],
+        ],
         animationFrameId: null,
 
         init: function (options = {}) {
@@ -39,18 +65,9 @@ window.addEventListener('load', (event) => {
         },
 
         startGame: function () {
-            this.pieces = [
-                new Piece(0, 0, 1, 2),
-                new Piece(0, 1, 2, 2, '#ff6f69'),
-                new Piece(0, 3, 1, 2),
-                new Piece(2, 0, 1, 2),
-                new Piece(2, 3, 1, 2),
-                new Piece(2, 1, 2, 1),
-                new Piece(4, 0, 1, 1),
-                new Piece(4, 3, 1, 1),
-                new Piece(3, 1, 1, 1),
-                new Piece(3, 2, 1, 1),
-            ];
+            const levelConfig = this.levels[this.currentLevel];
+            this.pieces = levelConfig.map(config => new Piece(config.row, config.col, config.width, config.height, config.color));
+            this.updateLevelIndicator();
             cancelAnimationFrame(this.animationFrameId);
             this.animationFrameId = requestAnimationFrame(this.draw);
         },
@@ -112,7 +129,13 @@ window.addEventListener('load', (event) => {
             if (piece && piece.row === 3 && piece.col === 1) {
                 this.lockGame();
                 this.displayWinMessage();
+                this.nextLevel();
             }
+        },
+
+        nextLevel: function () {
+            this.currentLevel = (this.currentLevel + 1) % this.levels.length;
+            this.startGame();
         },
 
         lockGame: function () {
@@ -129,6 +152,10 @@ window.addEventListener('load', (event) => {
             this.ctx.textAlign = "center";
             this.ctx.fillText("You Win!", this.canvas.width / 2, this.canvas.height - 20);
             this.ctx.restore();
+        },
+
+        updateLevelIndicator: function () {
+            document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
         },
 
         onMouseDown: function (event) {
