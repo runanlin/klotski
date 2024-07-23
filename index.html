@@ -1,26 +1,26 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en-US">
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Klotski Demo</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
+  </head>
+  <body>
     <h1>Archaeology Demo</h1>
     <div id="flavor-text">Hi students! What you have in front of you are pieces of an ancient artefact from the Viking period, unfortunately stuck beneath all of these debris. Carefully extract them!</div>
     <div id="level-indicator">Level 1</div>
     <div id="canvas-container">
-        <canvas id="canvas" width="400" height="500">
-          Oops, your browser does not support this canvas. Try on a larger screen!
-        </canvas>
-        <div class="border-line top-border"></div>
-        <div class="border-line bottom-border"></div>
-        <div class="border-line bottom-border right"></div>
-        <div class="border-line left-border"></div>
-        <div class="border-line right-border"></div>
+      <canvas id="canvas" width="400" height="500">
+        Oops, your browser does not support this canvas. Try on a larger screen!
+      </canvas>
+      <div class="border-line top-border"></div>
+      <div class="border-line bottom-border"></div>
+      <div class="border-line bottom-border right"></div>
+      <div class="border-line left-border"></div>
+      <div class="border-line right-border"></div>
     </div>
     <button onclick="KlotskiGame.startGame()">Restart Level</button>
     <button onclick="window.KlotskiGame.resetGame()">Reset Game</button>
-  <script src="klotski_script.js"></script>
-</body>
+    <script src="klotski_script.js"></script>
+  </body>
 </html>
