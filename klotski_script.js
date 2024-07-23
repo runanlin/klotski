@@ -23,17 +23,17 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
             // Level 2 setup
             [
-                { row: 0, col: 1, width: 2, height: 2, color: '#ff6f69' },
+                // Add pieces configuration for Level 2
             ],
             // Level 3 setup
             [
-                { row: 0, col: 1, width: 2, height: 2, color: '#ff6f69' },
+                // Add pieces configuration for Level 3
             ],
             // Level 4 setup
             [
@@ -137,14 +137,18 @@ window.addEventListener('load', (event) => {
             const piece = this.pieces.find(p => p.width === 2 && p.height === 2);
             if (piece && piece.row === 3 && piece.col === 1) {
                 this.lockGame();
-                this.displayWinMessage();
-                this.nextLevel();
+                if (this.currentLevel === this.levels.length - 1) {
+                    this.displayEndGameMessage();
+                } else {
+                    this.displayNextLevelMessage();
+                }
             }
         },
 
         nextLevel: function () {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
             this.startGame();
+            this.hideIframe();
         },
 
         lockGame: function () {
@@ -154,18 +158,73 @@ window.addEventListener('load', (event) => {
             cancelAnimationFrame(this.animationFrameId);
         },
 
-        displayWinMessage: function () {
-            this.ctx.save();
-            this.ctx.font = "30px Arial";
-            this.ctx.fillStyle = "red";
-            this.ctx.textAlign = "center";
-            this.ctx.fillText("You Win!", this.canvas.width / 2, this.canvas.height - 20);
-            this.ctx.restore();
+        displayNextLevelMessage: function () {
+            this.createIframe(`
+                <h2>Level Complete!</h2>
+                <button onclick="window.KlotskiGame.nextLevel()">Next Level</button>
+            `);
+        },
+
+        displayEndGameMessage: function () {
+            this.createIframe(`
+                <h2>You dug up all the pieces! Good job!</h2>
+            `);
+        },
+
+        createIframe: function (content) {
+            const iframe = document.createElement('iframe');
+            iframe.id = 'endgame-iframe';
+            iframe.style.position = 'absolute';
+            iframe.style.top = '50%';
+            iframe.style.left = '50%';
+            iframe.style.transform = 'translate(-50%, -50%)';
+            iframe.style.border = 'none';
+            iframe.style.background = 'white';
+            iframe.style.zIndex = '1000';
+            iframe.style.width = '300px';
+            iframe.style.height = '200px';
+
+            iframe.srcdoc = `
+                <html>
+                <head>
+                    <style>
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+                            height: 100%;
+                            margin: 0;
+                        }
+                        h2 {
+                            font-size: 24px;
+                        }
+                        button {
+                            font-size: 18px;
+                            padding: 10px 20px;
+                            margin-top: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${content}
+                </body>
+                </html>
+            `;
+
+            document.body.appendChild(iframe);
+        },
+
+        hideIframe: function () {
+            const iframe = document.getElementById('endgame-iframe');
+            if (iframe) {
+                iframe.remove();
+            }
         },
 
         updateLevelIndicator: function () {
             document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
-        },        
+        },
 
         onMouseDown: function (event) {
             event.preventDefault();
@@ -266,7 +325,6 @@ window.addEventListener('load', (event) => {
 
     }.init();
 });
-
 
 function Piece(startRow, startCol, width, height, color = '#cd8500') {
     this.row = startRow;
