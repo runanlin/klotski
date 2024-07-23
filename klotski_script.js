@@ -154,7 +154,6 @@ window.addEventListener('load', (event) => {
         checkVictoryCondition: function () {
             const piece = this.pieces.find(p => p.width === 2 && p.height === 2);
             if (piece && piece.row === 3 && piece.col === 1) {
-                this.lockGame();
                 if (this.currentLevel === this.levels.length - 1) {
                     this.displayEndGameMessage();
                 } else {
@@ -167,13 +166,6 @@ window.addEventListener('load', (event) => {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
             this.hideIframe();
             this.startGame();
-        },
-        
-        lockGame: function () {
-            this.canvas.removeEventListener('mousedown', this.onMouseDown);
-            this.canvas.removeEventListener('mousemove', this.onMouseMove);
-            this.canvas.removeEventListener('mouseup', this.onMouseUp);
-            cancelAnimationFrame(this.animationFrameId);
         },
         
         displayNextLevelMessage: function () {
