@@ -23,7 +23,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -49,7 +49,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -95,6 +95,7 @@ window.addEventListener('load', (event) => {
             const levelConfig = this.levels[this.currentLevel];
             this.pieces = levelConfig.map(config => new Piece(config.row, config.col, config.width, config.height, config.color));
             this.updateLevelIndicator();
+            this.addEventListeners();
             cancelAnimationFrame(this.animationFrameId);
             this.animationFrameId = requestAnimationFrame(this.draw);
         },
@@ -154,6 +155,7 @@ window.addEventListener('load', (event) => {
         checkVictoryCondition: function () {
             const piece = this.pieces.find(p => p.width === 2 && p.height === 2);
             if (piece && piece.row === 3 && piece.col === 1) {
+                this.lockGame();
                 if (this.currentLevel === this.levels.length - 1) {
                     this.displayEndGameMessage();
                 } else {
@@ -166,6 +168,11 @@ window.addEventListener('load', (event) => {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
             this.hideIframe();
             this.startGame();
+        },
+
+        lockGame: function () {
+            this.removeEventListeners();
+            cancelAnimationFrame(this.animationFrameId);
         },
 
         displayNextLevelMessage: function () {
@@ -333,6 +340,18 @@ window.addEventListener('load', (event) => {
             return { isAllowed: allowed, move };
         },
 
+        addEventListeners: function () {
+            this.canvas.addEventListener("mousedown", this.onMouseDown);
+            this.canvas.addEventListener("mousemove", this.onMouseMove);
+            this.canvas.addEventListener("mouseup", this.onMouseUp);
+        },
+
+        removeEventListeners: function () {
+            this.canvas.removeEventListener('mousedown', this.onMouseDown);
+            this.canvas.removeEventListener('mousemove', this.onMouseMove);
+            this.canvas.removeEventListener('mouseup', this.onMouseUp);
+        },
+
     }.init();
 });
 
@@ -370,7 +389,7 @@ function Piece(startRow, startCol, width, height, color = '#cd8500') {
         }
         this.row = row + move.y;
         this.col = col + move.x;
-
+    
         // Check victory condition after moving the piece
         window.KlotskiGame.checkVictoryCondition();
     };
