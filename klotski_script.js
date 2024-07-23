@@ -356,66 +356,50 @@ window.addEventListener('load', (event) => {
     
         onMouseDown: function (event) {
             event.preventDefault();
-            var x = event.x;
-            var y = event.y;
-            x -= this.canvas.offsetLeft;
-            y -= this.canvas.offsetTop;
-           // console.log(x,y)
-            const row = Math.floor(y/this.size);
-            const col = Math.floor(x/this.size);
-            console.log(row, col);
-    
+            const rect = this.canvas.getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+            const row = Math.floor(y / this.size);
+            const col = Math.floor(x / this.size);
+            
             let klocek = this.getKlocekAt(row, col);
-            console.log(klocek);
             if (klocek) {
                 if (this.currentKlocek && this.currentKlocek != klocek) {
                     this.currentKlocek.selected = false;
                 }
-           
                 klocek.toogle();
                 this.currentKlocek = klocek.selected ? klocek : null;
-                // this.possibleMoves = getPossibleMoves(klocek);
             } else if (this.currentKlocek) {
-                // console.log(this.isTherePath(this.currentKlocek, row, col));
                 isTherePath = this.isTherePath(this.currentKlocek, row, col)
-                console.log(isTherePath)
                 if (isTherePath.isAllowed) {
                     this.currentKlocek.moveTo(row, col, isTherePath.move);
-                    // this.currentKlocek = null;
                 }
-               
             } 
         },
     
         onMouseMove: function (event) {
             event.preventDefault();
-            var x = event.x;
-            var y = event.y;
-            x -= this.canvas.offsetLeft;
-            y -= this.canvas.offsetTop;
-           // console.log(x,y)
-            const row = Math.floor(y/this.size);
-            const col = Math.floor(x/this.size);
-            console.log(row, col);
+            const rect = this.canvas.getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+            const row = Math.floor(y / this.size);
+            const col = Math.floor(x / this.size);
             if (this.currentKlocek) {
                 isTherePath = this.isTherePath(this.currentKlocek, row, col)
-                console.log(isTherePath)
                 if (isTherePath.isAllowed) {
                     this.currentKlocek.moveTo(row, col, isTherePath.move);
-                    // this.currentKlocek = null;
                 }
             }
         },
     
         onMouseUp: function (event) {
             event.preventDefault();
-           
             if (this.currentKlocek) {
                 this.currentKlocek.selected = false;
                 this.currentKlocek = null;
-                this.checkWinCondition();
+                this.checkVictoryCondition();
             }
-        }
+        },
 
     }.init();
 });
