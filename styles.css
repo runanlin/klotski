@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+#canvas-container {
+    position: relative;
+}
+
+#canvas {
+    display: block;
+}
+
+.border-line {
+    position: absolute;
+    background-color: black;
+}
+
+.top-border, .bottom-border {
+    width: 100%;
+    height: 10px;
+}
+
+.left-border, .right-border {
+    height: 100%;
+    width: 10px;
+}
+
+.top-border {
+    top: 0;
+    left: 0;
+}
+
+.bottom-border {
+    bottom: 0;
+    left: 0;
+    width: calc(50% - 100px);
+}
+
+.bottom-border.right {
+    right: 0;
+    left: auto;
+    width: calc(50% - 100px);
+}
+
+.left-border {
+    top: 0;
+    left: 0;
+}
+
+.right-border {
+    top: 0;
+    right: 0;
+}
+
+button {
+    margin-top: 20px;
+}
