@@ -23,7 +23,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2 },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
