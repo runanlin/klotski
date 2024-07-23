@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <h1>Klotski Demo</h1>
+    <div id="level-indicator">Level 1</div>
     <div id="canvas-container">
         <canvas id="canvas" width="400" height="500">
             Your browser does not support canvas.
@@ -16,7 +18,7 @@
         <div class="border-line left-border"></div>
         <div class="border-line right-border"></div>
     </div>
-    <button onclick="Game.start()">Start again</button>
+    <button onclick="KlotskiGame.startGame()">Start again</button>
     <script src="klotski_script.js"></script>
 </body>
 </html>
