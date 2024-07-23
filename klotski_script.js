@@ -100,6 +100,12 @@ window.addEventListener('load', (event) => {
             this.animationFrameId = requestAnimationFrame(this.draw);
         },
 
+        resetGame: function () {
+            this.currentLevel = 0; // Reset to the first level
+            this.hideIframe(); // Hide any iframes if they are visible
+            this.startGame(); // Start the game from the beginning
+        },
+
         draw: function () {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             for (let piece of this.pieces) {
