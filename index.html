@@ -1,12 +1,21 @@
-<html>
-  <head>
-    <title>Klotski</title>
-    <script src="script.js"></script>
+<!DOCTYPE html> 
+<html lang="en-US">
+  <head meta charset="utf-8">
+    <title>Klotski Demo</title>
+    <style src="styles.css"></style>
+    <script src="klotski_script.js"></script>
   </head>
   <body>
-    <canvas id="canvas" width="400" height="500" style="border:1px solid black; float:left; margin-right:10px">
-      Your browser does not support canvas.
-    </canvas>
+    <div id="canvas-container">
+      <canvas id="canvas" width="400" height="500">
+        Your browser does not support canvas.
+      </canvas>
+      <div class="border-line top-border"></div>
+      <div class="border-line bottom-border"></div>
+      <div class="border-line bottom-border right"></div>
+      <div class="border-line left-border"></div>
+      <div class="border-line right-border"></div>
+    </div>
     <button onclick="Game.start()">Start again</button>
   </body>
 </html>
