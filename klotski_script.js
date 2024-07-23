@@ -23,7 +23,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -49,7 +49,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69' },
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -161,26 +161,26 @@ window.addEventListener('load', (event) => {
                 }
             }
         },
-        
+
         nextLevel: function () {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
             this.hideIframe();
             this.startGame();
         },
-        
+
         displayNextLevelMessage: function () {
             this.createIframe(`
                 <h2>Level Complete!</h2>
                 <button onclick="parent.window.KlotskiGame.nextLevel()">Next Level</button>
             `);
         },
-        
+
         displayEndGameMessage: function () {
             this.createIframe(`
                 <h2>You dug up all the pieces! Good job!</h2>
             `);
         },
-        
+
         createIframe: function (content) {
             const iframe = document.createElement('iframe');
             iframe.id = 'endgame-iframe';
@@ -193,7 +193,7 @@ window.addEventListener('load', (event) => {
             iframe.style.zIndex = '1000';
             iframe.style.width = '300px';
             iframe.style.height = '200px';
-        
+
             iframe.srcdoc = `
                 <html>
                 <head>
@@ -221,16 +221,16 @@ window.addEventListener('load', (event) => {
                 </body>
                 </html>
             `;
-        
+
             document.body.appendChild(iframe);
         },
-        
+
         hideIframe: function () {
             const iframe = document.getElementById('endgame-iframe');
             if (iframe) {
                 iframe.remove();
             }
-        },        
+        },
 
         updateLevelIndicator: function () {
             document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
@@ -370,7 +370,7 @@ function Piece(startRow, startCol, width, height, color = '#cd8500') {
         }
         this.row = row + move.y;
         this.col = col + move.x;
-    
+
         // Check victory condition after moving the piece
         window.KlotskiGame.checkVictoryCondition();
     };
