@@ -137,15 +137,13 @@ window.addEventListener('load', (event) => {
             const piece = this.pieces.find(p => p.width === 2 && p.height === 2);
             if (piece && piece.row === 3 && piece.col === 1) {
                 this.lockGame();
-                setTimeout(() => {
-                    if (this.currentLevel === this.levels.length - 1) {
-                        this.displayEndGameMessage();
-                    } else {
-                        this.displayNextLevelMessage();
-                    }
-                }, 5000); // 500ms delay before showing the message
+                if (this.currentLevel === this.levels.length - 1) {
+                    this.displayEndGameMessage();
+                } else {
+                    this.displayNextLevelMessage();
+                }
             }
-        },        
+        },
 
         nextLevel: function () {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
@@ -362,7 +360,8 @@ function Piece(startRow, startCol, width, height, color = '#cd8500') {
         }
         this.row = row + move.y;
         this.col = col + move.x;
-
+    
+        // Check victory condition after moving the piece
         window.KlotskiGame.checkVictoryCondition();
     };
 
