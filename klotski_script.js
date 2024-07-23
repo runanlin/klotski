@@ -29,7 +29,16 @@ window.addEventListener('load', (event) => {
             ],
             // Level 2 setup
             [
-                // Add pieces configuration for Level 2
+                { row: 0, col: 0, width: 2, height: 1 },
+                { row: 0, col: 2, width: 2, height: 1 },
+                { row: 1, col: 0, width: 2, height: 1 },
+                { row: 2, col: 0, width: 2, height: 1 },
+                { row: 2, col: 2, width: 2, height: 1 },
+                { row: 3, col: 0, width: 1, height: 1 },
+                { row: 3, col: 1, width: 1, height: 1 },
+                { row: 3, col: 2, width: 2, height: 2, color: '#ff6f69'},
+                { row: 4, col: 0, width: 1, height: 1 },
+                { row: 4, col: 1, width: 1, height: 1 },
             ],
             // Level 3 setup
             [
