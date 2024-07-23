@@ -7,6 +7,11 @@ body {
     flex-direction: column;
 }
 
+h1 {
+    position: relative;
+    font-size: 300%;
+}
+
 #flavor-text {
     position: relative;
     margin-left: 100px;
