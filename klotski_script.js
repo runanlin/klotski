@@ -183,8 +183,8 @@ window.addEventListener('load', (event) => {
 
         displayNextLevelMessage: function () {
             this.createIframe(`
-                <h2>Level Complete!</h2>
-                <button onclick="parent.window.KlotskiGame.nextLevel()">Next Level</button>
+                <h2>You Dug Up a Piece!</h2>
+                <button onclick="parent.window.KlotskiGame.nextLevel()">Go to the next dig site</button>
             `);
         },
 
