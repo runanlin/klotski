@@ -293,6 +293,7 @@ window.addEventListener('load', (event) => {
             if (this.currentPiece) {
                 this.currentPiece.selected = false;
                 this.currentPiece = null;
+                this.checkVictoryCondition();
             }
         },
 
@@ -394,9 +395,6 @@ function Piece(startRow, startCol, width, height, color = '#5a1807') {
         }
         this.row = row + move.y;
         this.col = col + move.x;
-    
-        // Check victory condition after moving the piece
-        window.KlotskiGame.checkVictoryCondition();
     };
 
     this.toggle = () => {
