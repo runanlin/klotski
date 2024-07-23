@@ -143,7 +143,7 @@ window.addEventListener('load', (event) => {
                     } else {
                         this.displayNextLevelMessage();
                     }
-                }, 200); // 200ms delay before showing the message
+                }, 500); // 500ms delay before showing the message
             }
         },        
 
