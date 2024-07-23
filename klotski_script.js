@@ -137,13 +137,15 @@ window.addEventListener('load', (event) => {
             const piece = this.pieces.find(p => p.width === 2 && p.height === 2);
             if (piece && piece.row === 3 && piece.col === 1) {
                 this.lockGame();
-                if (this.currentLevel === this.levels.length - 1) {
-                    this.displayEndGameMessage();
-                } else {
-                    this.displayNextLevelMessage();
-                }
+                setTimeout(() => {
+                    if (this.currentLevel === this.levels.length - 1) {
+                        this.displayEndGameMessage();
+                    } else {
+                        this.displayNextLevelMessage();
+                    }
+                }, 200); // 200ms delay before showing the message
             }
-        },
+        },        
 
         nextLevel: function () {
             this.currentLevel = (this.currentLevel + 1) % this.levels.length;
