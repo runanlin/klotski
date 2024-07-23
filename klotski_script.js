@@ -17,6 +17,7 @@ window.addEventListener('load', (event) => {
             // Level 1 setup
             [
                 // Add pieces configuration for Level 1
+                { row: 4, col: 2, width: 2, height: 2,}
             ],
             // Level 2 setup
             [
