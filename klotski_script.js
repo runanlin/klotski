@@ -157,7 +157,7 @@ window.addEventListener('load', (event) => {
 
         updateLevelIndicator: function () {
             document.getElementById('level-indicator').textContent = `Level ${this.currentLevel + 1}`;
-        },
+        },        
 
         onMouseDown: function (event) {
             event.preventDefault();
