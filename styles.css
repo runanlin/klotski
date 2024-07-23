@@ -7,6 +7,12 @@ body {
     flex-direction: column;
 }
 
+#flavor-text {
+    position: relative;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 #canvas-container {
     position: relative;
 }
