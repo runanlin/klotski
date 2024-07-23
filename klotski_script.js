@@ -329,6 +329,30 @@ window.addEventListener('load', (event) => {
             };
             // return DFS(graph[startIndex], graph[destinationIndex]) || DFS(graph[startIndex], graph[horizontalSize*previousRow + previousCol]);
         },
+
+        checkWinCondition: function() {
+            const klocek = this.klocki.find(k => k.width === 2 && k.height === 2);
+            if (klocek && klocek.row === 3 && klocek.col === 1) {
+                this.lockGame();
+                this.displayWinMessage();
+            }
+        },
+        
+        lockGame: function() {
+            this.canvas.removeEventListener('mousedown', this.onMouseDown);
+            this.canvas.removeEventListener('mousemove', this.onMouseMove);
+            this.canvas.removeEventListener('mouseup', this.onMouseUp);
+            cancelAnimationFrame(this.animationFrameId);
+        },
+        
+        displayWinMessage: function() {
+            this.ctx.save();
+            this.ctx.font = "30px Arial";
+            this.ctx.fillStyle = "red";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText("You Win!", this.canvas.width / 2, this.canvas.height - 20);
+            this.ctx.restore();
+        },
     
         onMouseDown: function (event) {
             event.preventDefault();
@@ -389,8 +413,10 @@ window.addEventListener('load', (event) => {
             if (this.currentKlocek) {
                 this.currentKlocek.selected = false;
                 this.currentKlocek = null;
+                this.checkWinCondition();
             }
         }
+
     }.init();
 });
 
@@ -434,7 +460,9 @@ function Klocek(startRow, startCol, width, height, color = '#cd8500') {
             col = 4 - this.width;
         }
         this.row = row + move.y;
-         this.col = col + move.x;
+        this.col = col + move.x;
+
+        window.Game.checkWinCondition();
     }
     this.toogle = () => {
         this.selected = !this.selected
