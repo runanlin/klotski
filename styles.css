@@ -13,6 +13,14 @@ body {
     margin-right: 100px;
 }
 
+#level-indicator {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 200%;
+}
+
 #canvas-container {
     position: relative;
 }
