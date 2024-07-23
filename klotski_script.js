@@ -293,7 +293,6 @@ window.addEventListener('load', (event) => {
             if (this.currentPiece) {
                 this.currentPiece.selected = false;
                 this.currentPiece = null;
-                this.checkVictoryCondition();
             }
         },
 
