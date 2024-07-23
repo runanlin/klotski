@@ -10,6 +10,7 @@ body {
 h1 {
     position: relative;
     font-size: 300%;
+    font-weight: bold;
 }
 
 #flavor-text {
