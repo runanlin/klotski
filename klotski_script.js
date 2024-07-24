@@ -208,8 +208,8 @@ window.addEventListener('load', (event) => {
             iframe.style.border = 'none';
             iframe.style.background = 'white';
             iframe.style.zIndex = '1000';
-            iframe.style.width = '500px';
-            iframe.style.height = '400px';
+            iframe.style.width = '350px';
+            iframe.style.height = '250px';
 
             iframe.srcdoc = `
                 <html>
@@ -225,6 +225,10 @@ window.addEventListener('load', (event) => {
                         }
                         h2 {
                             font-size: 24px;
+                        }
+                        img {
+                            max-width: 200px; /* Adjusted max-width */
+                            height: auto;
                         }
                         button {
                             font-size: 18px;
