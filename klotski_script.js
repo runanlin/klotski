@@ -193,7 +193,8 @@ window.addEventListener('load', (event) => {
 
         displayEndGameMessage: function () {
             this.createIframe(`
-                <h2>You dug up all the pieces! Good job!</h2>
+                <h2>You dug up all the pieces and reassembled the artefact! Good job!</h2>
+                <img src="images/Longship.png" alt="End Game Image" style="display: block; margin: 20px auto;">
             `);
         },
 
