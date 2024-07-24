@@ -380,8 +380,6 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
         this.image.onload = () => {
             console.log(`Image loaded: ${imageSrc}`);
             this.drawImage = true;
-            // Trigger a redraw after the image is loaded
-            window.KlotskiGame.draw();
         };
         this.image.onerror = () => {
             console.error(`Failed to load image: ${imageSrc}`);
