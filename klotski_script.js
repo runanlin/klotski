@@ -393,7 +393,9 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
         ctx.strokeRect(x, y, w, h);
         ctx.fillStyle = this.selected ? `rgba(${this.color.substring(1).match(/.{2}/g).map(c => parseInt(c, 16)).join(',')}, 0.5)` : this.color;
         ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
-        ctx.drawImage(this.image, x + 2, y + 2, w - 4, h - 4);
+        if (this.drawImage && this.image.complete) {
+            ctx.drawImage(this.image, x + 2, y + 2, w - 4, h - 4);
+        }
         ctx.restore();
     };
 
