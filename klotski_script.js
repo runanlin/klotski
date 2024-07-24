@@ -378,11 +378,9 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
         this.image = new Image();
         this.image.src = imageSrc;
         this.image.onload = () => {
-            console.log(`Image loaded: ${imageSrc}`);
             this.drawImage = true;
         };
         this.image.onerror = () => {
-            console.error(`Failed to load image: ${imageSrc}`);
         };
     }
 
@@ -399,10 +397,8 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
         ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
 
         if (this.image && this.drawImage) {
-            console.log(`Drawing image at (${x + 2}, ${y + 2}, ${w - 4}, ${h - 4})`);
             ctx.drawImage(this.image, x + 2, y + 2, w - 4, h - 4);
         } else {
-            console.log(`No image to draw or image not loaded yet.`);
         }
 
         ctx.restore();
