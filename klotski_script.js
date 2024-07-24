@@ -372,6 +372,7 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
     this.color = color;
     this.selected = false;
     this.image = null;
+    this.drawImage = false;
 
     if (imageSrc) {
         this.image = new Image();
@@ -392,7 +393,7 @@ function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = 
         ctx.strokeRect(x, y, w, h);
         ctx.fillStyle = this.selected ? `rgba(${this.color.substring(1).match(/.{2}/g).map(c => parseInt(c, 16)).join(',')}, 0.5)` : this.color;
         ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
-        if (this.image && this.drawImage) {
+        if (this.drawImage && this.image.complete) {
             ctx.drawImage(this.image, x + 2, y + 2, w - 4, h - 4);
         }
         ctx.restore();
