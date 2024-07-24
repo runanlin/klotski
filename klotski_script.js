@@ -29,7 +29,7 @@ window.addEventListener('load', (event) => {
             ],
             // Level 2 setup
             [
-                { row: 0, col: 1, width: 2, height: 2,  color: '#545e56'},
+                { row: 0, col: 1, width: 2, height: 2,  color: '#545e56', imageSrc: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F07%2F3840x2160-Images-Free-Download.jpg&f=1&nofb=1&ipt=95301b924b1c570acaf85a5fe99a1cfd933e0e12ccaa64a1f814e8ea5896398c&ipo=images'},
                 { row: 1, col: 0, width: 1, height: 1 },
                 { row: 1, col: 3, width: 1, height: 1 },
                 { row: 2, col: 0, width: 1, height: 1 },
