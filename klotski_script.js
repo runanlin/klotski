@@ -195,6 +195,7 @@ window.addEventListener('load', (event) => {
             this.createIframe(`
                 <h2>You dug up all the pieces and reassembled the artefact! Good job!</h2>
                 <img src="images/Longship.png" alt="End Game Image" style="display: block; margin: 10px auto;">
+                <button onclick="window.KlotskiGame.resetGame()">End Game</button>
             `);
         },
 
