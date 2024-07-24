@@ -96,7 +96,7 @@ window.addEventListener('load', (event) => {
 
         startGame: function () {
             const levelConfig = this.levels[this.currentLevel];
-            this.pieces = levelConfig.map(config => new Piece(config.row, config.col, config.width, config.height, config.color));
+            this.pieces = levelConfig.map(config => new Piece(config.row, config.col, config.width, config.height, config.color, config.imageSrc,));
             this.updateLevelIndicator();
             this.addEventListeners();
             cancelAnimationFrame(this.animationFrameId);
