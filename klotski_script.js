@@ -208,8 +208,8 @@ window.addEventListener('load', (event) => {
             iframe.style.border = 'none';
             iframe.style.background = 'white';
             iframe.style.zIndex = '1000';
-            iframe.style.width = '300px';
-            iframe.style.height = '200px';
+            iframe.style.width = '500px';
+            iframe.style.height = '400px';
 
             iframe.srcdoc = `
                 <html>
