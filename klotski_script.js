@@ -29,7 +29,7 @@ window.addEventListener('load', (event) => {
             ],
             // Level 2 setup
             [
-                { row: 0, col: 1, width: 2, height: 2,  color: '#545e56'},
+                { row: 0, col: 1, width: 2, height: 2,  color: '#545e56', imageSrc: '/images/tent.png'},
                 { row: 1, col: 0, width: 1, height: 1 },
                 { row: 1, col: 3, width: 1, height: 1 },
                 { row: 2, col: 0, width: 1, height: 1 },
@@ -46,7 +46,7 @@ window.addEventListener('load', (event) => {
             // Level 3 setup
             [
                 { row: 0, col: 0, width: 1, height: 2 },
-                { row: 0, col: 1, width: 2, height: 2, color: '#545e56' },
+                { row: 0, col: 1, width: 2, height: 2, color: '#545e56', imageSrc: '/images/oars.png'},
                 { row: 0, col: 3, width: 1, height: 1 },
                 { row: 1, col: 3, width: 1, height: 1 },
                 { row: 2, col: 0, width: 1, height: 2 },
@@ -59,7 +59,7 @@ window.addEventListener('load', (event) => {
             // Level 4 setup
             [
                 { row: 0, col: 0, width: 1, height: 2 },
-                { row: 0, col: 1, width: 2, height: 2, color: '#545e56'},
+                { row: 0, col: 1, width: 2, height: 2, color: '#545e56', imageSrc: '/images/sail.png'},
                 { row: 0, col: 3, width: 1, height: 2 },
                 { row: 2, col: 0, width: 1, height: 2 },
                 { row: 2, col: 3, width: 1, height: 2 },
