@@ -23,7 +23,7 @@ window.addEventListener('load', (event) => {
                 { row: 2, col: 2, width: 2, height: 1 },
                 { row: 3, col: 0, width: 1, height: 1 },
                 { row: 3, col: 1, width: 1, height: 1 },
-                { row: 3, col: 2, width: 2, height: 2, color: '#545e56'},
+                { row: 3, col: 2, width: 2, height: 2, color: '#545e56', imageSrc: '1%20-%20Ship.png'},
                 { row: 4, col: 0, width: 1, height: 1 },
                 { row: 4, col: 1, width: 1, height: 1 },
             ],
@@ -364,24 +364,34 @@ window.addEventListener('load', (event) => {
     }.init();
 });
 
-function Piece(startRow, startCol, width, height, color = '#5a1807') {
+function Piece(startRow, startCol, width, height, color = '#5a1807', imageSrc = null) {
     this.row = startRow;
     this.col = startCol;
     this.width = width;
     this.height = height;
     this.color = color;
     this.selected = false;
+    this.image = null;
+
+    if (imageSrc) {
+        this.image = new Image();
+        this.image.src = imageSrc;
+    }
 
     this.draw = (ctx, size) => {
         const x = this.col * size;
         const y = this.row * size;
         const w = this.width * size;
         const h = this.height * size;
+
         ctx.save();
         ctx.fillStyle = "#000000";
         ctx.strokeRect(x, y, w, h);
         ctx.fillStyle = this.selected ? `rgba(${this.color.substring(1).match(/.{2}/g).map(c => parseInt(c, 16)).join(',')}, 0.5)` : this.color;
         ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
+        if (this.image) {
+            ctx.drawImage(this.image, x + 2, y + 2, w - 4, h - 4);
+        }
         ctx.restore();
     };
 
